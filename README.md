@@ -74,13 +74,13 @@ In order to use the EEG version (online/offline) follow the next steps.
     1. If online mode `load Arousal-Valence-Enobio-online.xml` or `Arousal-Valence-Emotiv-online.xml` from `OpenViBE_config` folder.
     2. If offline mode `load Arousal-Valence-Enobio-offline.xml` or `Arousal-Valence-Emotiv-offline.xml` from `OpenViBE_config` folder.  
       NOTE: Remember to choose input file.
-  7. Open `openvibe-adquisition-server.cmd`
+  7. (if online)Open `openvibe-adquisition-server.cmd`
     1. Choose Enobio/Emotiv device from the drivers list 
     2. Check that connection port is `1024`.
     3. (if Enobio) Open Driver Properties and 
       1. Set number of channels. 
       2. Set mac addresss (rear in Enobio device). 
-      3. Load `Enobio_ch_config.txt` or enter electrode names for each chanel.
+      3. Load `Enobio_ch_config.txt` (in `OpenViBE_config`) or enter electrode names for each channel.
     4. Click `Connect`.
     5. Click `Play`.
   8. Click `Play` from `openvibe-designer`.
