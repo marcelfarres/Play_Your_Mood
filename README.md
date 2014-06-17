@@ -58,6 +58,36 @@ You can download and install this version [here](https://www.processing.org/down
 * Emotiv EEG version.  
   If you want to use Emotiv, you can just install the current version of OpenViBE ([here](http://openvibe.inria.fr/downloads/)).
 
+# Run Play Your Mood 
+In order to use the EEG version (online/offline) follow the next steps.
+Preparation.  
+  1. Compile `enobioDSP` and `enobioFileClient` from `eegMood` (open cmd inside each folder and then run `go build`).
+  1. Copy `streaming_extractor_archivemusic` from `/build/src/examples/` to `/code/essentia/`.
+  2. Copy the `svm_models` folder from `/build/src/examples/` to `/code/essentia/`.
+  3. Edit `extract_script.py` line 94, `parser_script.py` line 100 and `clear_sigFiles.py` line 39 and add your musics path. 
+  4. Run as many cores your machine have `extraxt_script.py` ( from cmd `python extraxt_script.py`).
+  5. When step 4 is compled, run `parser_script.py` ( from cmd `python parser_script.py`).
+
+Run the program. 
+  6. Open `openvibe-designer.cmd` from `src/dist` and load:
+    1. If online mode `load Arousal-Valence-Enobio-online.xml` or `Arousal-Valence-Emotiv-online.xml` from `OpenViBE_config` folder.
+    2. If offline mode `load Arousal-Valence-Enobio-offline.xml` or `Arousal-Valence-Emotiv-offline.xml` from `OpenViBE_config` folder.  
+      NOTE: Remember to choose input file.
+  7. Open `openvibe-adquisition-server.cmd`
+    1. Choose Enobio/Emotiv device from the drivers list 
+    2. Check that connection port is `1024`.
+    3. (if Enobio) Open Driver Properties and 
+      1. Set number of channels. 
+      2. Set mac addresss (rear in Enobio device). 
+      3. Load `Enobio_ch_config.txt` or enter electrode names for each chanel.
+    4. Click `Connect`.
+    5. Click `Play`.
+  8. Click `Play` from `openvibe-designer`.
+  9. Execute `enobioFileClient.exe`.
+  10. Open `Play_Your_Mood.pde` whith processing. 
+  11. Wait for 1 min in order that the program runs smooth (Arousal an Valence values must be diferent to 1 and -1)
+
+
 
 # Issues in the current version. 
 * EEG mood detection version is only working under Windows (tested) and Linux (not tested)
