@@ -4,39 +4,39 @@ Play_Your_Mood
 Play Your Mood v2.0 is a music player that, after analysing all your music library (using Essentia+Gaia), creates mood-related playlist and then reproduces it depending on your mood. The mood is approximated using real time Enobio/Emotiv EEG data or also can be choose by the user (switch between master/MoodPlayer). 
 
 In this readme you can find:
-* How to install the music player whith and whithout EEG mood detection + dependences.
+* How to install the music player with and without EEG mood detection + dependences.
 * How to _RUN_ the player.
 * Issues.
 
-# Install Dependences
+# Install Dependenciess
 
 ## Essentia + Gaia  
 You can follow the instructions first [Install Gaia](https://github.com/MTG/gaia/blob/master/README.md) and after [Install  Essentia](http://essentia.upf.edu/documentation/installing.html).
 
-   NOTE: you have to install the 2.0.1 version of Essentia.  
-   NOTE: before you building essentia you have to replace the `streaming_extractor_archivemusic.cpp` file in `build/src/examples/` whith the one whith the same name provided in this repo. 
+   NOTE: you have to install the **2.0.1** version of Essentia.  
+   NOTE: before you building essentia you have to replace the `streaming_extractor_archivemusic.cpp` file in `build/src/examples/` with the one with the same name provided in this repo. 
 
 ## Python 
-The curren version is tested under Python 2.7.7.  
+The current version is tested under **Python 2.7.7**.  
 You can download and install this version [here](https://www.python.org/download/releases/2.7.7/).
 
 ## GoLang 
-The curren version is tested under go1.2.2.  
+The current version is tested under **go1.2.2**.  
 You can download and install this version [here](http://golang.org/dl/).
 
 ## Processing
-The curren version is tested under Processing 2.2.1.  
+The current version is tested under **Processing 2.2.1**.  
 You can download and install this version [here](https://www.processing.org/download/?processing).
 
 ## OpenViBE
    NOTE: This is only necessary if you want to use EEG version.
-* Emotiv+Enobio EEG version.  
-  If you want to use both you will have to build OpenViBE whith Enobio3G libs.  
+* **Emotiv+Enobio EEG version.**  
+  If you want to use both you will have to build OpenViBE with Enobio3G libs.  
   Follow this steps.  
   1. Download [OpenViBE src](http://openvibe.inria.fr/downloads/).
   1. Download [this](http://www.neuroelectrics.com/sites/neuroelectrics.com/files/enobio/enobio3Gopenvibe-v1.2.1.zip) (enobio Lib files for OpenViBE)  
   2. (Only Windows) Download and install VS2010/VS2008 ([here](http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#DownloadFamilies_4))
-  2. Download and Install QT v.4.8.6 (for windos choose the VS verison you alrredy install, for Linux Qt libraries 4.8.6 for Linux/X11 )
+  2. Download and Install QT v.4.8.6 (for windows choose the VS version you already install, for Linux Qt libraries 4.8.6 for Linux/X11 )
   2. Copy `src/` and `share/` folders and contents to `OV_SOURCE_CODE/contrib/plugins/server-drivers/enobio3G` (you'll need to create this folder first).
   3. Copy `Enobio3GAPI.win` or `Enobio3GAPI.linux`, depending on your platform, to `OV_SOURCE_CODE/contrib/plugins/server-drivers/enobio3G`. For windows, you'll need to copy the contents of `MSVC/` or `MINGW/` to `Enobio3GAPI.win32`
   4. Copy `FindThirdPartyNeuroelectricsEnobio3G.cmake` to `OV_SOURCE_CODE/cmake-modules` 
@@ -55,13 +55,13 @@ You can download and install this version [here](https://www.processing.org/down
   11. After follow the steps in [OpenViBE build instructions](http://openvibe.inria.fr/build-instructions/). 
 
 
-* Emotiv EEG version.  
+* **Emotiv EEG version.**  
   If you want to use Emotiv, you can just install the current version of OpenViBE ([here](http://openvibe.inria.fr/downloads/)).
 
 # Run Play Your Mood 
 In order to use the EEG version (online/offline) follow the next steps.
 
-Preparation.  
+**Preparation.**  
   1. Compile `enobioDSP` and `enobioFileClient` from `eegMood` (open cmd inside each folder and then run `go build`).
   1. Copy `streaming_extractor_archivemusic` from `/build/src/examples/` to `/code/essentia/`.
   2. Copy the `svm_models` folder from `/build/src/examples/` to `/code/essentia/`.
@@ -69,7 +69,7 @@ Preparation.
   4. Run as many cores your machine have `extraxt_script.py` ( from cmd `python extraxt_script.py`).
   5. When step 4 is compled, run `parser_script.py` ( from cmd `python parser_script.py`).
 
-Run the program. 
+**Run the program.**  
   6. Open `openvibe-designer.cmd` from `src/dist` and load:
     1. If online mode `load Arousal-Valence-Enobio-online.xml` or `Arousal-Valence-Emotiv-online.xml` from `OpenViBE_config` folder.
     2. If offline mode `load Arousal-Valence-Enobio-offline.xml` or `Arousal-Valence-Emotiv-offline.xml` from `OpenViBE_config` folder.  
@@ -85,23 +85,23 @@ Run the program.
     5. Click `Play`.
   8. Click `Play` from `openvibe-designer`.
   9. Execute `enobioFileClient.exe`.
-  10. Open `Play_Your_Mood.pde` whith processing. 
-  11. Wait for 1 min in order that the program runs smooth (Arousal an Valence values must be diferent to 1 and -1)
+  10. Open `Play_Your_Mood.pde` with Processing. 
+  11. Wait for 1 min in order that the program runs smooth (Arousal and Valence values must be different to 1 and -1)
 
 In order to use the non EEG version follow the next steps.
 
-Preparation.  
+**Preparation.**  
   1. Copy `streaming_extractor_archivemusic` from `/build/src/examples/` to `/code/essentia/`.
   2. Copy the `svm_models` folder from `/build/src/examples/` to `/code/essentia/`.
   3. Edit `extract_script.py` line 94, `parser_script.py` line 100 and `clear_sigFiles.py` line 39 and add your musics path. 
   4. Run as many cores your machine have `extraxt_script.py` ( from cmd `python extraxt_script.py`).
   5. When step 4 is compled, run `parser_script.py` ( from cmd `python parser_script.py`).
 
-Run the program. 
-  1. Open `Play_Your_Mood.pde` whith processing. 
-  2. Wait for 1 min in order that the program runs smooth (Arousal an Valence values must be diferent to 1 and -1)
+**Run the program.**  
+  1. Open `Play_Your_Mood.pde` with Processing. 
+  2. Wait for 1 min in order that the program runs smooth (Arousal and Valence values must be different to 1 and -1)
 
-    GENERAL NOTE: Is not required but recommended to run `extract_script.py` and  `parser_script.py` every time you use the program. 
+    **GENERAL NOTE: Is not required but recommended to run `extract_script.py` and  `parser_script.py` every time you use the program.** 
     
 # Issues in the current version. 
 * EEG mood detection version is only working under Windows (tested) and Linux (not tested)
