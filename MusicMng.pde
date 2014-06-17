@@ -13,8 +13,9 @@ class MusicMng {
   MusicVis MV;
   FileMng FM;
   FontMng fontm;
+  MoodMng moodmn;
   
-  public MusicMng(MusicVis MV, FileMng FM, Minim minim, FontMng fontm){
+  public MusicMng(MusicVis MV, FileMng FM, Minim minim, FontMng fontm, MoodMng moodmn){
     sampleRate = 44100;
     bufferSize = 1024;
     min_freq   = 87;
@@ -42,6 +43,9 @@ class MusicMng {
 
     // Save the Font Manager 
     this.fontm = fontm;
+
+    // Save the Mood Manager 
+    this.moodmn = moodmn;
 
     // Create the active list array
     active_list = new JSONArray();
@@ -149,6 +153,12 @@ class MusicMng {
     
     // Update the emitters whit the new information. 
     MV.updateEmmiters(averages);
+
+    // Change mood if necessary 
+    if (moodmn.getMoodChange()){
+      musm.setActiveList(moodmn.getMood());
+      musm.nextSong();
+    }
   }
 
   public void close(){

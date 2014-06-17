@@ -14,11 +14,11 @@ class MusicVis {
   public MusicVis (){
     // variables init 
     emitters = new ArrayList<Emitter>();
-    gravity  = new PVector(0, 1);
-    
+    gravity = new PVector(0, 1);
+  
     buf = createGraphics(width, height);
-    
-    emit_rate = 1; // if your computer are running at 20 fps, if not change to ¬
+
+    emit_rate = 1; // if your computer are running at 20 fps 
     // emit_rate = 2; // if your computer are running at 12 fps with emit_rate = 1; 
     
     // Environment setup
@@ -62,7 +62,7 @@ class MusicVis {
   public void createEmitters (int n) {
     float angle;
     PVector point, coord;
-    float r        = 80;
+    float r = 80;
     PVector center = new PVector (width/2, height/2);
     
     // Save emitters number
@@ -132,6 +132,3 @@ class MusicVis {
 
   
 };
-
-
-

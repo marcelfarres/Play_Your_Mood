@@ -4,8 +4,6 @@ class MoodMng {
   MusicVis musv;
 
   ArrayList<MoodVis> moodsvis;
-  ArrayList<PowerVis> powersvis;
-  
 
   String [] moods     = {"Relaxed", "Sad", "Angry", "Happy"}; // Mood string (order matter)
   float[] starts      = {0, HALF_PI, PI, PI+HALF_PI}; // Circle angle for each mood
@@ -13,11 +11,9 @@ class MoodMng {
   int last_mood       = 0; // Control mood changes 
   boolean mood_change = true; 
   PVector max_mood; // Hold mood data (coefficient, color and mood index )
-  float arousal, valence;
+  float arousal, balence;
   float ecg, hbr;
 
-
-  
   public MoodMng (MusicVis musv, FontMng fontm){
     // Save MusicVis and FontMng
     this.musv  = musv;
@@ -25,17 +21,18 @@ class MoodMng {
     
     // Create Vis Objects array
     moodsvis   = new ArrayList<MoodVis>();
-    powersvis  = new ArrayList<PowerVis>();
     
     // Initialize vars
     arousal    = 0;
-    valence    = 0;
+    balence    = 0;
     ecg        = 0;
     hbr        = 0;
 
     // Create the Vis Objects
     this.createMoodVis();
-    this.creatPowerVis(); 
+
+    float [] moods_coef = {1.0, 0.0, 0.0, 0.0};
+    updateMoods(moods_coef);
   }
 
   public void createMoodVis() {
@@ -43,12 +40,6 @@ class MoodMng {
     for (int i = 0; i < moods.length; ++i) {
       moodsvis.add(new MoodVis(1,moods[i], starts[i], col[i],i));
     }
-  }
-
-  public void creatPowerVis() {
-    // Create top left and right arousal valence representation
-    powersvis.add(new PowerVis (true) );
-    powersvis.add(new PowerVis (false) );
   }
 
   public void updateMoods(float [] moods_coef) {
@@ -70,16 +61,8 @@ class MoodMng {
     if (last_mood != int(max_mood.z)) {
       musv.updateEmmiters(int(max_mood.y));
       musv.updateMetaC(int(max_mood.y));
-      last_mood   = int(max_mood.z);
+      last_mood = int(max_mood.z);
       mood_change = true;
-    }
-  }
-    
-  public void updatePowers(float [] powers_coef) {
-    // Update valence and arouse power values
-    for (int i = 0; i < 2; ++i) { 
-      PowerVis p = powersvis.get(i);
-      p.updatePower(powers_coef[i]);
     }
   }
 
@@ -104,10 +87,6 @@ class MoodMng {
     /* draw the moods circles*/
     for (MoodVis m : moodsvis) {
       m.draw();
-    }
-    /* draw the valence and arousal powers*/
-    for (PowerVis p : powersvis) {
-      p.draw();
     }
   }
 

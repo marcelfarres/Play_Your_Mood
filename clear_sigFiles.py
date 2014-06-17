@@ -2,11 +2,11 @@ import os
 import os.path
 
 ###################################################################################################### 
-###### DIR CLEAR FUNCTION 
+###### DIR PARSER FUNCTION 
 ######################################################################################################
 def cleaner (directory):
   formats = ('.sig') # list of extractor extensions (keep them in lower case)
-  n       = 0
+  n = 0
 
   #get path from command line argument
   path = directory
@@ -36,14 +36,17 @@ def cleaner (directory):
 ############ MAIN 
 #######################################################################################################
 # EXAMPLE CALL python clear_sigFiles.py
+outputPath = "./data/songLib.json"
 dirToDelete = ["/Users/marcelfarres/Downloads", "URERED"]
 
 for dir in dirToDelete:
+  # cmd = "python parse.py"+" "+dir
+  # print cmd
+  # os.system(cmd)
   if not os.path.isdir(dir):
     print "Error: path "+dir+" does not exist!"
     break
-  else:
-    cleaner (dir)
+  cleaner (dir)
 
 print "\n\nAll the dir are correctly cleaned !"
 

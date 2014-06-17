@@ -90,6 +90,7 @@ def parser (directory, b_id, in_index, outData):
 
   print ("\n\nAll files from "+path+" are in the database. Last ID(number of songs): "+str(id))
   print ("  Sig Files Size: "+str(sig_size/1000000)+" MB\n\n")
+
   return (id, index, outData) 
 
 #######################################################################################################
@@ -97,7 +98,7 @@ def parser (directory, b_id, in_index, outData):
 #######################################################################################################
 # EXAMPLE CALL python extract_script.py
 # dirToExtract = ["F:\MUSIC"]
-dirToExtract = ["/Users/marcelfarres/Documents/MUSIC_TEST"]
+dirToExtract = ["/Users/marcelfarres/Documents/MUSIC_TEST", "/Volumes/Mac Data/MUSIC"]
 outputPath   = "./data/songLib.json"
 outData      = {}
 id           = 0
@@ -120,4 +121,3 @@ with open(outputPath, 'a') as outfile:
 outfile.close
 
 print ("\n\nAll the dir are correctly parsed. Songs added/total: "+str(id)+"/"+str(index)+"\n\n\n")
-

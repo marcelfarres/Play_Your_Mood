@@ -72,6 +72,7 @@ def extractor (directory):
             if "'" in fileName or root:
               # print "There is a ( ' ) in the path! Change command line construction."
               # Prevent other threads to analyse the file
+
               t = open(root+'/'+fileName+'.sig', 'a')
               t.close()
               cmd = essentiaExtractor +' "'+fullpath+'" "'+root+'/'+fileName+'.sig"'+' '+'"'+essentiaModels+'"'
@@ -83,7 +84,7 @@ def extractor (directory):
             #launches the command line
             os.system(cmd)
             extract_fies += 1
-            # Print progress information
+
             print ("   %d/100 Done! Files extracted: %d  Total: (%d/%d)" % (100*done_files/total_files, extract_fies, done_files, total_files))
             print "\n"
 #######################################################################################################
@@ -105,3 +106,4 @@ def main ():
 
 if __name__ == "__main__":
   main()
+
