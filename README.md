@@ -51,7 +51,7 @@ You can download and install this version [here](https://www.processing.org/down
   8. Edit `OV_SOURCE_CODE/contrib/common/contribAcquisitionServer.cmake` and add the following line:
   `OV_ADD_CONTRIB_DRIVER("${CMAKE_SOURCE_DIR}/contrib/plugins/server-drivers/enobio3G")`
   9. For linux, additionally, at the time of running the acquisition server, you may need to copy `libEnobio3GAPI.so*` and `libBluezBluetooth.so*` (in `ENOBIO3GAPI/libs`) to the platform dependant folder in `OV_SOURCE_CODE/dist/lib/` 
-  10. For windows, additionally, at the time of running the acquisition server, you may need to copy ´WinBluetoothAPI.dll´ and ´.lib´ to ´OV_SOURCE_CODE/dist´.
+  10. For windows, additionally, at the time of running the acquisition server, you may need to copy `WinBluetoothAPI.dll` and `.lib` to `OV_SOURCE_CODE/dist`.
   11. After follow the steps in [OpenViBE build instructions](http://openvibe.inria.fr/build-instructions/). 
 
 
