@@ -85,7 +85,7 @@ In order to use the EEG version (online/offline) follow the next steps.
     5. Click `Play`.
   8. Click `Play` from `openvibe-designer`.
   9. Execute `enobioFileClient.exe`.
-  10. Open `Play_Your_Mood.pde` with Processing. 
+  10. Open `Play_Your_Mood.pde` with Processing and press play. 
   11. Wait for 1 min in order that the program runs smooth (Arousal and Valence values must be different to 1 and -1)
 
 In order to use the non EEG version follow the next steps.
@@ -98,10 +98,11 @@ In order to use the non EEG version follow the next steps.
   5. When step 4 is compled, run `parser_script.py` ( from cmd `python parser_script.py`).
 
 **Run the program.**  
-  1. Open `Play_Your_Mood.pde` with Processing. 
-  2. Wait for 1 min in order that the program runs smooth (Arousal and Valence values must be different to 1 and -1)
+  1. Open `Play_Your_Mood.pde` with Processing and press play. 
 
-    **GENERAL NOTE: Is not required but recommended to run `extract_script.py` and  `parser_script.py` every time you use the program.** 
+    **GENERAL NOTE: Is not required but recommended to run `extract_script.py` and  `parser_script.py` every time you use the program.**
+    **GENERAL NOTE: You can change the song by pressing `n` and pause it by pressing `p`.** 
+    **GENERAL NOTE: You can export the app by `File --> Export Application`.** 
     
 # Issues in the current version. 
 * EEG mood detection version is only working under Windows (tested) and Linux (not tested)
