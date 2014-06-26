@@ -1,27 +1,27 @@
 Play_Your_Mood
 ==============
 
-Play Your Mood v2.0 is a music player that, after analysing all your music library (using Essentia+Gaia), creates mood-related playlist and then reproduces it depending on your mood. The mood is approximated using real time Enobio/Emotiv EEG data or also can be choose by the user (switch between master/MoodPlayer). 
+Play Your Mood v2.0 is a music player that, after analysing all your music library (using Essentia+Gaia), creates mood-related play-list and then reproduces it depending on your mood. The mood is approximated using real time Enobio/Emotiv EEG data or also can be choose by the user (switch between master/MoodPlayer). 
 
 In this readme you can find:
 * How to install the music player with and without EEG mood detection + dependences.
 * How to _RUN_ the player.
 * Issues.
 
-# Install Dependenciess
+# Install Dependencies
 
 ## Essentia + Gaia  
 You can follow the instructions first [Install Gaia](https://github.com/MTG/gaia/blob/master/README.md) and after [Install  Essentia](http://essentia.upf.edu/documentation/installing.html).
 
    NOTE: you have to install the **2.0.1** version of Essentia.  
-   NOTE: before you building essentia you have to replace the `streaming_extractor_archivemusic.cpp` file in `build/src/examples/` with the one with the same name provided in this repo. 
+   NOTE: before you building Essentia you have to replace the `streaming_extractor_archivemusic.cpp` file in `build/src/examples/` with the one with the same name provided in this repository. 
 
 ## Python 
 The current version is tested under **Python 2.7.7**.  
 You can download and install this version [here](https://www.python.org/download/releases/2.7.7/).
 
 ## GoLang 
-The current version is tested under **go1.2.2**.  
+The current version is tested under **go 1.2.2**.  
 You can download and install this version [here](http://golang.org/dl/).
 
 ## Processing
@@ -71,15 +71,15 @@ In order to use the EEG version (online/offline) follow the next steps.
 
 **Run the program.**  
   6. Open `openvibe-designer.cmd` from `src/dist` and load:
-    1. If online mode `load Arousal-Valence-Enobio-online.xml` or `Arousal-Valence-Emotiv-online.xml` from `OpenViBE_config` folder.
-    2. If offline mode `load Arousal-Valence-Enobio-offline.xml` or `Arousal-Valence-Emotiv-offline.xml` from `OpenViBE_config` folder.  
+    1. If on-line mode `load Arousal-Valence-Enobio-online.xml` or `Arousal-Valence-Emotiv-online.xml` from `OpenViBE_config` folder.
+    2. If off-line mode `load Arousal-Valence-Enobio-offline.xml` or `Arousal-Valence-Emotiv-offline.xml` from `OpenViBE_config` folder.  
       NOTE: Remember to choose input file.
-  7. (if online)Open `openvibe-adquisition-server.cmd`
+  7. (if on-line)Open `openvibe-adquisition-server.cmd`
     1. Choose Enobio/Emotiv device from the drivers list 
     2. Check that connection port is `1024`.
     3. (if Enobio) Open Driver Properties and 
       1. Set number of channels. 
-      2. Set mac addresss (rear in Enobio device). 
+      2. Set mac address (rear in Enobio device). 
       3. Load `Enobio_ch_config.txt` (in `OpenViBE_config`) or enter electrode names for each channel.
     4. Click `Connect`.
     5. Click `Play`.
