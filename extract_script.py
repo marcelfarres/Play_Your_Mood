@@ -91,7 +91,7 @@ def extractor (directory):
 #######################################################################################################
 # EXAMPLE CALL python extract_script.py
 def main ():
-  dirToExtract = ["/Users/marcelfarres/Documents/MUSIC_TEST", "/Volumes/Mac Data/MUSIC"]
+  dirToExtract = ["/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
 
   for dir in dirToExtract:
     if not os.path.isdir(dir):

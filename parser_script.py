@@ -21,6 +21,8 @@ def parser (directory, b_id, in_index, outData):
   id    = b_id;
   index = in_index 
 
+  mood = " "
+
   # traverse root directory, and list directories as dirs and files as files
   for root, dirs, files in os.walk(path):
       for file in files:
@@ -64,6 +66,10 @@ def parser (directory, b_id, in_index, outData):
                   mood      = "Sad"
                   max_value = value
 
+              if mood is not "Sad" or "Relaxed" or "Happy" or "Angry":
+                mood = "noMood"
+                print ("test")
+
               directory = root +"/"
               fileName  = fileN+extension
 
@@ -97,7 +103,7 @@ def parser (directory, b_id, in_index, outData):
 #######################################################################################################
 # EXAMPLE CALL python extract_script.py
 # dirToExtract = ["F:\MUSIC"]
-dirToExtract = ["/Users/marcelfarres/Documents/MUSIC_TEST"]
+dirToExtract = ["/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
 outputPath   = "./data/songLib.json"
 outData      = {}
 id           = 0
