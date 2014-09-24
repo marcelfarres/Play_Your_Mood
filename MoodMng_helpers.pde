@@ -229,9 +229,6 @@ class DataColl {
 
   public void newSample (int target){
     println("temp_data.target: "+temp_data.target);
-    for (int i = 0; i < 4; ++i) {
-      println("temp_data.m_time[i]: "+i+" "+temp_data.m_time[i]);
-    }
     all_data.add(new Data(temp_data.target, temp_data.m_time));
     temp_data.reset(target);
     // for (Data o : all_data) {

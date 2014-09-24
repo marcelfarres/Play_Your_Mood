@@ -66,9 +66,6 @@ public class FileMng  {
     for (Data o : all_data) {
       JSONObject data = new JSONObject();
 
-      for (int i = 0; i < 4; ++i) {
-        println("o.m_time[i]: "+i+" "+o.m_time[i]);
-      }
       data.setInt("id", full_data.size());
       data.setInt("target", o.target);
       data.setInt("Relaxed", o.m_time[0]);
