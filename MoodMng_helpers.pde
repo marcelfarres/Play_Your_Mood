@@ -234,6 +234,11 @@ class DataColl {
     }
     all_data.add(new Data(temp_data.target, temp_data.m_time));
     temp_data.reset(target);
+    // for (Data o : all_data) {
+    //   for (int i = 0; i < 4; ++i) {
+    //     println("o.m_time[i]: "+i+" "+o.m_time[i]);
+    //   }
+    // }
   }
 
   public void draw() {
@@ -247,7 +252,6 @@ class DataColl {
       case 1 :
         message = moods[targets.get(index)];
         fill(color (col[targets.get(index)], 40, 200),255);
-        // message = concat ("Think stuff related to ", moods[targets.get(index)]);
       break;  
     }
     textFont(fontm.fonts_data[0]); // 0 funciona 
@@ -265,16 +269,20 @@ class Data {
 
   public Data () {
     target    = 0; 
-    m_time = new int [4];
+    m_time    = new int [4];
     m_time[0] = 0;
     m_time[1] = 0;
     m_time[2] = 0;
     m_time[3] = 0;
   }
 
-  public Data (int t, int [] m_t) {
+  public Data (int t, int[] m_t) {
     target = t; 
-    m_time = m_t;
+    m_time    = new int [4];
+    m_time[0] = m_t[0];
+    m_time[1] = m_t[1];
+    m_time[2] = m_t[2];
+    m_time[3] = m_t[3];
   }
 
   public void reset (int t){
