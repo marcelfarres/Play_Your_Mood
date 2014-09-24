@@ -97,7 +97,7 @@ def main ():
   for dir in dirToExtract:
     if not os.path.isdir(dir):
       print "Error: path does not exist"
-      break 
+      continue 
     else:
       cleaner(dir)
       extractor (dir)

@@ -45,7 +45,7 @@ for dir in dirToDelete:
   # os.system(cmd)
   if not os.path.isdir(dir):
     print "Error: path "+dir+" does not exist!"
-    break
+    continue
   cleaner (dir)
 
 print "\n\nAll the dir are correctly cleaned !"
