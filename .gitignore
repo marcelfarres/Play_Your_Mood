@@ -5,4 +5,6 @@
 
 data/songLib.json
 
-data/songLib.json
+data/output/
+
+build-tmp/
