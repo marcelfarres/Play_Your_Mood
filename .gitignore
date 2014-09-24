@@ -2,3 +2,5 @@
 *.class
 
 *.java
+
+data/songLib.json
