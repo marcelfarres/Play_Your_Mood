@@ -2,9 +2,11 @@ class MoodMng {
 
   FontMng fontm;
   MusicVis musv;
+  FileMng filem;
 
   ArrayList<MoodVis> moodsvis;
   ArrayList<PowerVis> powersvis;
+  DataColl datacoll;
   
 
   String [] moods     = {"Relaxed", "Sad", "Angry", "Happy"}; // Mood string (order matter)
@@ -16,12 +18,11 @@ class MoodMng {
   float arousal, valence;
   float ecg, hbr;
 
-
-  
-  public MoodMng (MusicVis musv, FontMng fontm){
+  public MoodMng (MusicVis musv, FontMng fontm, FileMng filem){
     // Save MusicVis and FontMng
     this.musv  = musv;
     this.fontm = fontm;
+    this.filem = filem;
     
     // Create Vis Objects array
     moodsvis   = new ArrayList<MoodVis>();
@@ -36,6 +37,10 @@ class MoodMng {
     // Create the Vis Objects
     this.createMoodVis();
     this.creatPowerVis(); 
+
+    // Create the Data Collector
+    datacoll =  new DataColl(moods, col);
+
   }
 
   public void createMoodVis() {
@@ -67,7 +72,7 @@ class MoodMng {
     // If there is a mood change update emitters and meta-data color,  
     // and activate mood_change flag used in connection manager to change  
     // music manager active song list.
-    if (last_mood != int(max_mood.z)) {
+    if (last_mood != int(max_mood.z)) {      
       musv.updateEmmiters(int(max_mood.y));
       musv.updateMetaC(int(max_mood.y));
       last_mood   = int(max_mood.z);
@@ -109,7 +114,12 @@ class MoodMng {
     for (PowerVis p : powersvis) {
       p.draw();
     }
+    datacoll.sampleControll(last_mood);
+    datacoll.draw ();
+  }
+
+  public void saveData () {
+    filem.saveData2JSON (datacoll.all_data);
   }
 
 };
-

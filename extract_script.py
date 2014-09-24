@@ -91,12 +91,12 @@ def extractor (directory):
 #######################################################################################################
 # EXAMPLE CALL python extract_script.py
 def main ():
-  dirToExtract = ["/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
+  dirToExtract = ["/Users/marcelfarres/Music", "/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
 
   for dir in dirToExtract:
     if not os.path.isdir(dir):
       print "Error: path does not exist"
-      break 
+      continue 
     else:
       cleaner(dir)
       extractor (dir)

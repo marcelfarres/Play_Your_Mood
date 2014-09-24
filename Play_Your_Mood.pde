@@ -55,7 +55,7 @@ void setup() {
   fontm  = new FontMng();
   musv   = new MusicVis();
   musm   = new MusicMng(musv, filem, minim, fontm);
-  moodmn = new MoodMng(musv, fontm);
+  moodmn = new MoodMng(musv, fontm, filem);
   conm   = new ConnMng(c,moodmn, musm);
 
   if (debug){
@@ -97,6 +97,7 @@ void keyPressed(){
 void exit(){
   // Close all the stuff needed
   println("We are on exit !");
+  moodmn.saveData();
   musm.close();
   conm.close();
   super.exit();

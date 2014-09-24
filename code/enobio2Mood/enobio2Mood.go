@@ -60,10 +60,10 @@ func handleConnection(conn net.Conn) {
 			// p.Angry = rand.Float32()
 			// p.Happy = rand.Float32()*100
 			// p.Sad = rand.Float32()
-			p.Relax = .3
-			p.Angry = .7
-			p.Happy = .9
-			p.Sad = .4
+			p.Relax = rand.Float32()
+			p.Angry = rand.Float32()
+			p.Happy = rand.Float32()
+			p.Sad = rand.Float32()
 			p.Arousal = rand.Float32()
 			p.Balence = rand.Float32()
 			p.ECG = rand.Float32()

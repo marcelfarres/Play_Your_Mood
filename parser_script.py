@@ -103,8 +103,8 @@ def parser (directory, b_id, in_index, outData):
 ############ MAIN 
 #######################################################################################################
 # EXAMPLE CALL python extract_script.py
-dirToExtract = ["C:\Users\user\Desktop\TFG\Music"]
-# dirToExtract = ["/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
+# dirToExtract = ["C:\Users\user\Desktop\TFG\Music"]
+dirToExtract = ["/Users/marcelfarres/Music", "/Users/marcelfarres/Desktop/TFG", "/Volumes/Mac Data/MUSIC"]
 outputPath   = "./data/songLib.json"
 outData      = {}
 id           = 0
@@ -118,7 +118,7 @@ except OSError:
 for dir in dirToExtract:
   if not os.path.isdir(dir):
     print( "Error: path does not exist ( "+dir+")")
-    break
+    continue
   # print dir
   (id, index, outData) = parser (dir, id, index, outData)
 

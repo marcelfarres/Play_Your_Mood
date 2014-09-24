@@ -44,4 +44,8 @@ public class FileMng  {
 		println("Relaxed size: "+relaxed.size());
 	}
 
+	public void saveData2JSON (ArrayList<Data> all_data){
+		// Data + Info capcalera
+	}
+
 }

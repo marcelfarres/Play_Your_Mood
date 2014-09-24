@@ -147,3 +147,147 @@ class PowerVis  {
   }
 
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class DataColl {
+  // Config 
+  IntList targets; 
+  int repetitons;
+  int dur;
+  int rest;
+
+  // Controll
+  int elapsed;
+  int total_t;
+  int mode;
+  int index;
+
+  // Data & Vis
+  ArrayList <Data> all_data;
+  Data temp_data;
+  int start_t, end_t;
+
+  String[] moods;
+  int[] col;
+  PVector center = new PVector(width/2, height/2); // Center
+
+  public DataColl(String[] moods, int[] col) {
+    // Config 
+    dur        = 2 * 1000;
+    rest       = 1 * 1000;
+    repetitons = 5;
+
+    targets = new IntList();
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < repetitons; ++j) {
+        targets.append(i);
+      }
+    }
+    targets.shuffle();
+
+    mode  = 0;
+    index = 0; 
+
+    // Data & Vis
+    temp_data  = new Data();
+    all_data   = new ArrayList<Data>();
+    start_t    = millis ();
+    total_t    = 0;
+    this.moods = moods; 
+    this.col   = col;
+  }
+
+  public void sampleControll (int last_mood) {
+    end_t   = millis ();
+    elapsed = end_t - start_t;
+    total_t = total_t + elapsed;
+    start_t = end_t;    
+
+    switch (mode) {
+      case 0 :
+        if (total_t>rest) {
+          mode    = 1;
+          total_t = 0;
+        }
+      break;  
+      case 1 :
+        if (total_t>dur) {
+          mode    = 0;
+          newSample(targets.get(index));
+          index   = index + 1;
+          total_t = 0;
+        }else {
+          temp_data.m_time[last_mood] = temp_data.m_time[last_mood] + elapsed;
+        }
+      break;  
+    }
+
+    if (index > repetitons * 4 - 1) {
+      exit();
+    }
+  }
+
+  public void newSample (int target){
+    println("temp_data.target: "+temp_data.target);
+    for (int i = 0; i < 4; ++i) {
+      println("temp_data.m_time[i]: "+i+" "+temp_data.m_time[i]);
+    }
+    all_data.add(new Data(temp_data.target, temp_data.m_time));
+    temp_data.reset(target);
+  }
+
+  public void draw() {
+    String message = "";
+
+    switch (mode) {
+      case 0 :
+        message = "Break Time";
+        fill(color (0, 0, 255),255);
+      break;  
+      case 1 :
+        message = moods[targets.get(index)];
+        fill(color (col[targets.get(index)], 40, 200),255);
+        // message = concat ("Think stuff related to ", moods[targets.get(index)]);
+      break;  
+    }
+    textFont(fontm.fonts_data[0]); // 0 funciona 
+    textSize(60);
+    text(message, width - 330,  height - 50);
+
+  }
+
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+class Data {
+  int target;
+  int[] m_time;
+
+  public Data () {
+    target    = 0; 
+    m_time = new int [4];
+    m_time[0] = 0;
+    m_time[1] = 0;
+    m_time[2] = 0;
+    m_time[3] = 0;
+  }
+
+  public Data (int t, int [] m_t) {
+    target = t; 
+    m_time = m_t;
+  }
+
+  public void reset (int t){
+    target    = t; 
+    m_time[0] = 0;
+    m_time[1] = 0;
+    m_time[2] = 0;
+    m_time[3] = 0;
+  }
+
+  // a la hora de fer print a la sortida.
+  // public String[] Print () {
+  //   return ;
+  // }
+
+};
