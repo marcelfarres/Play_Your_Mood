@@ -41,7 +41,7 @@ dirToDelete = ["/Users/marcelfarres/Downloads", "URERED"]
 for dir in dirToDelete:
   if not os.path.isdir(dir):
     print "Error: path "+dir+" does not exist!"
-    break
+    continue
   else:
     cleaner (dir)
 

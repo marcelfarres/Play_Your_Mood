@@ -118,7 +118,7 @@ except OSError:
 for dir in dirToExtract:
   if not os.path.isdir(dir):
     print( "Error: path does not exist ( "+dir+")")
-    break
+    continue
   # print dir
   (id, index, outData) = parser (dir, id, index, outData)
 

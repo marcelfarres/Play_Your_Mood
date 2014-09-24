@@ -2,3 +2,9 @@
 *.class
 
 *.java
+
+data/songLib.json
+
+data/output/
+
+build-tmp/
